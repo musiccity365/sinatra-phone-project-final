@@ -1,5 +1,5 @@
-Phone Seller Pro
-Phone Seller Pro is a library for Antique Phone Collectors to manage and keep track of their current inventories in stock
+Phone Sorter Pro
+Phone Sorter Pro is a library for Antique Phone Collectors to manage and keep track of their current inventories in stock
 
 Installation
 Run the bundle install command to install all the necessary GEMS, then run rake db:migrate, and rake db:seed.

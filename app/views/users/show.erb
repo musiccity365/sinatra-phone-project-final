@@ -1,0 +1,14 @@
+    <h1><%= @user.name %></h1>
+    <p><% @user.phones.each do |phone| %>
+    <ul>
+      <li><h4>Manufacturer: </h4><%= phone.name %></li>
+      <li><h4>Model: </h4><%= phone.model %></li>
+      <li><h4>Color: </h4><%= phone.color %></li>
+      <li><h4>Age: </h4> <%= phone.age %></li>
+    </ul>
+    <br>
+    <% end %>
+      <a href="/phones/new"><input type="button" value="Create"></a>&nbsp;&nbsp;
+      <a href="/phones/index<%= current_user.id %>"><input type="button" value="View List"></a>&nbsp;&nbsp;
+      <a href="/users/<%= current_user.id %>/edit"><input type="button" value="Edit User"></a>&nbsp;&nbsp;
+    </p>

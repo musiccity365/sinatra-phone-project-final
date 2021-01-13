@@ -1,0 +1,15 @@
+    <h1>Show <%= @phone.name %></h1>
+    <ul>
+        <li><h4>Manufacturer: </h4><%= @phone.name %></li>
+        <li><h4>Model: </h4><%= @phone.model %></li>
+        <li><h4>Color: </h4><%= @phone.color %></li>
+        <li><h4>Age: </h4> <%= @phone.age %></li>
+    </ul>
+    <br>
+    <a href="/phones">
+      <input type="button" value="BACK">
+    </a>
+    <form action="/phones/<%= @phone.id %>" method="post">
+      <input type="hidden" name="_method" value="DELETE" />
+      <input type="submit" value="Delete">
+    </form>

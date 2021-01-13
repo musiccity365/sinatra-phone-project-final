@@ -1,0 +1,12 @@
+<h1>Make a New Phone</h1>
+<h3 style="color:Tomato;"><%= @errors %></h3> <!--load errors-->
+<form method="POST" action="/phones"> 
+  Name: <input type="text" name="name"><br>
+  Model No.: <input type="text" name="model"><br>
+  Color: <input type="text" name="color"><br>
+  Age: <input type="text" name="age"><br>
+  <input type="submit" value="Create a Phone">
+</form> 
+<a href="/users/<%= current_user.id %>">
+  <input type="button" value="BACK">
+</a>

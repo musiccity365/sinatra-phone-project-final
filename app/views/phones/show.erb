@@ -6,9 +6,9 @@
     <li><h4>Age: </h4> <%= @phone.age %></li>
 </ul>
 <br>
-<a href="/phones">
-  <input type="button" value="BACK">
+<a><input type="button" value="back" onclick="history.back()"/>
 </a>
+<a href="/users/<%= @phone.id %>/edit"><input type="button" value="Edit Phone"></a>&nbsp;&nbsp;
 <form action="/phones/<%= @phone.id %>" method="post">
   <input type="hidden" name="_method" value="DELETE" />
   <input type="submit" value="Delete">

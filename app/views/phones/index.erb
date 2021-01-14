@@ -1,5 +1,5 @@
-<h1>Phones: </h1>
-<ul><% @phones.each do |phone| %>
+<h1>All User Phones: </h1>
+<ul><% @all_phones.each do |phone| %>
     <h3 style="color:Tomato;"><%= @errors %></h3>
     <li><h4>Manufacturer: </h4><%= phone.name %></li>
     <li><h4>Model: </h4><%= phone.model %></li>
@@ -9,12 +9,13 @@
   <% if phone.user_id != nil %>
       <li><h4>Owner: </h4><%= owner.name %></li>
   <% else %>
-      <b>Owner:</b> No Owner
+    <% @phone.destroy %>
+      <%# <b>Owner:</b> No Owner %>
   <% end %>
   <a href="phones/<%= phone.id%>"><input type="button" value="Show"></a>
 <br><br>
 </ul>
 <% end %>
-<a href="phones/new"><input type="button" value="Create"></a>
+<a><input type="button" value="Back" onclick="history.back()"/></a>
 
 

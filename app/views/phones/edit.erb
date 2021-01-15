@@ -1,5 +1,5 @@
 <h1>Edit <%= @phone.name %></h1>
-<form method="POST" action="/phones/<%=@phone.id %>/edit"> 
+<form method="POST" action="/phones/<%=@phone.id %>/edit"> <%# action tells it the route, method tells it the http verb %>
   <input type="hidden" value="PATCH" name="_method">
   Name: <input type="text" name="phone[name]" value="<%= @phone.name %>"><br>
   Model: <input type="text" name="phone[model]" value="<%= @phone.model %>"><br>
@@ -7,6 +7,6 @@
   Age: <input type="text" name="phone[age]" value="<%= @phone.age %>"><br>
   <input type="submit" value="Update">
 </form> 
-<a href="/users/<%= current_user.id %>">
+<a href="/users/<%= @current_user.id %>">
   <input type="button" value="BACK">
 </a>

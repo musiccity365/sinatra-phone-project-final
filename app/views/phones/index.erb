@@ -5,10 +5,9 @@
     <li><h4>Model: </h4><%= phone.model %></li>
     <li><h4>Color: </h4><%= phone.color %></li>
     <li><h4>Age: </h4> <%= phone.age %></li>
-  <% owner = User.find_by(id: phone.user_id) %>
   <% if phone.user_id != nil %>
-      <li><h4>Owner: </h4><%= owner.name %></li>
-    <% if owner == current_user %>
+      <li><h4>Owner: </h4><%= phone.user.name %></li>
+    <% if phone.user == current_user %>
       <a href="phones/<%= phone.id%>"><input type="button" value="Show"></a>
     <% end %>
   <% end %>

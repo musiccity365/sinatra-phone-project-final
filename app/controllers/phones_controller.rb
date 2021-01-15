@@ -1,11 +1,13 @@
 class PhonesController < ApplicationController
   
   get '/phones/new' do
-    erb :"phones/new"
+    not_logged_in
+    erb :"/phones/new"
   end
   
   post '/phones' do
     # binding.pry
+    not_logged_in
     phone = current_user.phones.new(params) 
     if phone.save
       redirect "/users/#{current_user.id}" 
@@ -16,12 +18,13 @@ class PhonesController < ApplicationController
   end
 
   get '/phones' do
-    @phones = current_user.phones
+    not_logged_in
     @all_phones = Phone.all
     erb :"phones/index"
   end
 
   get '/phones/:id/edit' do
+    not_logged_in
     @phone = Phone.find_by(id: params[:id])
     # binding.pry
     if @phone.user == current_user
@@ -32,6 +35,7 @@ class PhonesController < ApplicationController
   end
 
   get '/phones/:id' do
+    not_logged_in
     @phone = Phone.find_by(id: params[:id]) 
     # binding.pry
     if @phone && @phone.user_id == current_user.id
@@ -42,14 +46,20 @@ class PhonesController < ApplicationController
   end
   
   patch "/phones/:id/edit" do
+    not_logged_in
     @phone = Phone.find_by(id: params[:id])
-    @phone.update(params[:phone])
+    if @phone && @phone.user_id == current_user.id
+      @phone.update(params[:phone])
+    end
     redirect "/phones/#{@phone.id}"
   end
 
   delete "/phones/:id" do
+    not_logged_in
     @phone = Phone.find_by(id: params[:id])
-    @phone.destroy
+    if @phone && @phone.user_id == current_user.id
+      @phone.destroy
+    end
     redirect "/phones"
   end
 end

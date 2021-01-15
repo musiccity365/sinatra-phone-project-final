@@ -14,7 +14,7 @@ class ApplicationController < Sinatra::Base
   end
 
   helpers do
-    def logged_in? # boolean method - returns true/false
+    def logged_in? 
       !!session[:user_id]
     end
 
@@ -24,7 +24,7 @@ class ApplicationController < Sinatra::Base
       # else
       #   @current_user = User.find_by(id: session[:user_id])
       # end
-      @current_user ||= User.find_by(id: session[:user_id]) # => THIS DOES THE SAME THING AS THE IF-ELSE STATEMENT ABOVE, SHORTHAND NOTATION
+      @current_user ||= User.find_by(id: session[:user_id]) 
     end 
   end 
 end

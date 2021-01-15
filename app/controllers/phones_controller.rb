@@ -1,30 +1,26 @@
 class PhonesController < ApplicationController
   
-  # New - loads a form
   get '/phones/new' do
     erb :"phones/new"
   end
   
-  # Create - processes the form and creates a phone
   post '/phones' do
     # binding.pry
-    phone = current_user.phones.new(params) # all keys in params hash match column name, so you can check this line in binding.pry 
+    phone = current_user.phones.new(params) 
     if phone.save
-      redirect "/users/#{current_user.id}" # only get requests will render views directly
+      redirect "/users/#{current_user.id}" 
     else
-      @errors = phone.errors.full_messages.join(" - ")# validate blank data
+      @errors = phone.errors.full_messages.join(" - ")
       erb :'/phones/new'
     end
   end
 
-  # Index - loads all the phones
   get '/phones' do
     @phones = current_user.phones
     @all_phones = Phone.all
     erb :"phones/index"
   end
 
-  # Edit - loading a form to edit a phone
   get '/phones/:id/edit' do
     @phone = Phone.find_by(id: params[:id])
     # binding.pry
@@ -35,9 +31,8 @@ class PhonesController < ApplicationController
     end
   end
 
-  # Show - get details on individual phone
   get '/phones/:id' do
-    @phone = Phone.find_by(id: params[:id]) #params hash is only accessible in controllers
+    @phone = Phone.find_by(id: params[:id]) 
     # binding.pry
     if @phone && @phone.user_id == current_user.id
       erb :"phones/show"
@@ -46,14 +41,12 @@ class PhonesController < ApplicationController
     end
   end
   
-  # Update
   patch "/phones/:id/edit" do
     @phone = Phone.find_by(id: params[:id])
     @phone.update(params[:phone])
     redirect "/phones/#{@phone.id}"
   end
 
-  # Delete
   delete "/phones/:id" do
     @phone = Phone.find_by(id: params[:id])
     @phone.destroy

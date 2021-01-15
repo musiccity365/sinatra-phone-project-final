@@ -1,14 +1,9 @@
 class UsersController < ApplicationController
-  # already added to config.ru
 
-  # signup
-
-  # New - loads a form
   get '/signup' do
     erb :'/users/new'
   end
 
-  # process form + create user
   post '/signup' do
     user = User.new(params[:user])
     if user.save

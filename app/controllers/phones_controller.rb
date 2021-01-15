@@ -5,6 +5,10 @@ class PhonesController < ApplicationController
     erb :"phones/new"
   end
   
+  post '/phones/index' do
+    redirect_to "/phones/"
+  end
+  
   # Create - processes the form and creates a phone
   post '/phones' do
     # binding.pry
@@ -50,13 +54,13 @@ class PhonesController < ApplicationController
   patch "/phones/:id/edit" do
     @phone = Phone.find_by(id: params[:id])
     @phone.update(params[:phone])
-    redirect to "/phones/#{@phone.id}"
+    redirect "/phones/#{@phone.id}"
   end
 
   # Delete
   delete "/phones/:id" do
     @phone = Phone.find_by(id: params[:id])
     @phone.destroy
-    redirect to "/phones"
+    redirect "/phones"
   end
 end

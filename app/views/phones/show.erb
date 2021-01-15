@@ -1,4 +1,4 @@
-<h1>Show <%= @phone.name %></h1>
+<h1>Phone Details</h1>
 <ul>
     <li><h4>Manufacturer: </h4><%= @phone.name %></li>
     <li><h4>Model: </h4><%= @phone.model %></li>
@@ -6,9 +6,9 @@
     <li><h4>Age: </h4> <%= @phone.age %></li>
 </ul>
 <br>
-<a><input type="button" value="back" onclick="history.back()"/></a>
-<a href="/users/<%= @phone.id %>/edit"><input type="button" value="Edit Phone"></a>&nbsp;&nbsp;
+<a><input type="button" value="Back" onclick="history.back()"/></a>
+<a href="/phones/<%= @phone.id %>/edit"><input type="button" value="Edit Phone"></a>&nbsp;&nbsp;
 <form action="/phones/<%= @phone.id %>" method="post">
   <input type="hidden" name="_method" value="DELETE" />
-  <input type="submit" value="Delete">
+  <input type="submit" value="Delete Phone">
 </form>

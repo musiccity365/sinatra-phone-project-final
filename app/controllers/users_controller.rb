@@ -40,6 +40,7 @@ class UsersController < ApplicationController
 
 
   get '/users/:id/edit' do
+    not_logged_in
     @user = User.find(params[:id])
     if @user.id == current_user.id
       erb :'/users/edit'
@@ -50,6 +51,7 @@ class UsersController < ApplicationController
 
 # Show - get details on an individual user
   get '/users/:id' do
+    not_logged_in
     @user = User.find_by(id: params[:id])
     if @user.id == current_user.id
       erb :'/users/show'
@@ -59,6 +61,7 @@ class UsersController < ApplicationController
   end
 
   patch '/users/:id/edit' do
+    not_logged_in
     @user = User.find(params[:id])
     if @user.id == current_user.id
       @user.update(params[:user])

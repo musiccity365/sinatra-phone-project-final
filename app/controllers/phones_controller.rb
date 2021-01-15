@@ -5,16 +5,12 @@ class PhonesController < ApplicationController
     erb :"phones/new"
   end
   
-  post '/phones/index' do
-    redirect_to "/phones/"
-  end
-  
   # Create - processes the form and creates a phone
   post '/phones' do
     # binding.pry
     phone = current_user.phones.new(params) # all keys in params hash match column name, so you can check this line in binding.pry 
     if phone.save
-      redirect "/phones/#{phones.id}" # only get requests will render views directly
+      redirect "/users/#{current_user.id}" # only get requests will render views directly
     else
       @errors = phone.errors.full_messages.join(" - ")# validate blank data
       erb :'/phones/new'
